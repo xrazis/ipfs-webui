@@ -7,6 +7,7 @@ import { normalizeFiles } from '../../lib/files'
 import DocumentIcon from '../../icons/StrokeDocument'
 import FolderIcon from '../../icons/StrokeFolder'
 import NewFolderIcon from '../../icons/StrokeNewFolder'
+import DataIcon from '../../icons/StrokeData'
 import DecentralizationIcon from '../../icons/StrokeDecentralization'
 // Components
 import { Dropdown, DropdownMenu, Option } from '../dropdown/Dropdown'
@@ -50,6 +51,11 @@ class FileInput extends React.Component {
     this.toggleDropdown()
   }
 
+  onAddByCar = () => {
+    window.alert('TODO')
+    // TODO
+  }
+
   onNewFolder = () => {
     this.props.onNewFolder()
     this.toggleDropdown()
@@ -86,6 +92,11 @@ class FileInput extends React.Component {
               isCliTutorModeEnabled={isCliTutorModeEnabled}>
               <DecentralizationIcon className='fill-aqua w2 mr1' />
               {t('addByPath')}
+            </Option>
+            <Option onClick={this.onAddByCar} id='add-by-car' onCliTutorMode={() => this.onCliTutorMode(cliCmdKeys.FROM_DAG_CAR)}
+              isCliTutorModeEnabled={isCliTutorModeEnabled}>
+              <DataIcon className='fill-aqua w2 mr1' />
+              {t('fromDagCar')}
             </Option>
             <Option onClick={this.onNewFolder} id='add-new-folder' onCliTutorMode={() => this.onCliTutorMode(cliCmdKeys.CREATE_NEW_DIRECTORY)}
               isCliTutorModeEnabled={isCliTutorModeEnabled}>
