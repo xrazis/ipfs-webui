@@ -52,8 +52,13 @@ class FileInput extends React.Component {
   }
 
   onAddByCar = () => {
-    window.alert('TODO')
-    // TODO
+    this.toggleDropdown()
+    return this.carInput.click()
+  }
+
+  onCarInputChange = (input) => async () => {
+    this.props.onImportCar(normalizeFiles(input.files))
+    input.value = null
   }
 
   onNewFolder = () => {
@@ -122,6 +127,13 @@ class FileInput extends React.Component {
           webkitdirectory='true'
           ref={el => { this.folderInput = el }}
           onChange={this.onInputChange(this.folderInput)} />
+
+        <input
+          id='car-input'
+          type='file'
+          className='dn'
+          ref={el => { this.carInput = el }}
+          onChange={this.onCarInputChange(this.carInput)} />
       </div>
     )
   }
@@ -131,7 +143,8 @@ FileInput.propTypes = {
   t: PropTypes.func.isRequired,
   onAddFiles: PropTypes.func.isRequired,
   onAddByPath: PropTypes.func.isRequired,
-  onNewFolder: PropTypes.func.isRequired
+  onNewFolder: PropTypes.func.isRequired,
+  onImportCar: PropTypes.func.isRequired
 }
 
 export default connect(
